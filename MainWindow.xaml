@@ -17,7 +17,7 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <Button x:Name="btnRSA" Content="RSA" HorizontalAlignment="Center" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Height="53" Width="104" Click="btnAES_Click" Margin="0,89,0,0">
+        <Button x:Name="btnRSA" Content="RSA" HorizontalAlignment="Center" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Height="53" Width="104" Click="btnRSA_Click" Margin="0,89,0,0">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>

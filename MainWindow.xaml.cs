@@ -24,8 +24,14 @@ namespace NOSCryptoProject
 
         private void btnAES_Click(object sender, RoutedEventArgs e)
         {
-            wdAES aes = new wdAES();
+            wdAES aes = new();
             aes.Show();
+        }
+
+        private void btnRSA_Click(object sender, RoutedEventArgs e)
+        {
+            wdRSA rsa = new();
+            rsa.Show();
         }
     }
 }

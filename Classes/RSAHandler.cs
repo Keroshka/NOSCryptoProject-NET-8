@@ -52,6 +52,11 @@ namespace OSCryptoProject.Classes
             {
                 byte[] toEncrypt = Encoding.UTF8.GetBytes(plainText);
                 byte[] encryptedData = _rsa.Encrypt(toEncrypt, RSAEncryptionPadding.Pkcs1);
+
+                StreamWriter fileWriter = new("encrypted_message_RSA.txt");
+                string encryptedString = Convert.ToBase64String(encryptedData);
+                fileWriter.Write(encryptedString);
+                fileWriter.Close();
                 return encryptedData;
             }
             catch (CryptographicException e)
@@ -61,7 +66,7 @@ namespace OSCryptoProject.Classes
             }
         }
 
-        public string? Decrypt(byte[] encryptedText)
+        public string Decrypt(byte[] encryptedText)
         {
             try
             {
@@ -71,7 +76,7 @@ namespace OSCryptoProject.Classes
             catch (CryptographicException e)
             {
                 MessageBox.Show(e.Message, "Error", MessageBoxButton.OK);
-                return null;
+                return "";
             }
         }
     }
