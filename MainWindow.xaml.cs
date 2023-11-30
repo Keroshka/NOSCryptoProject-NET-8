@@ -33,5 +33,11 @@ namespace NOSCryptoProject
             wdRSA rsa = new();
             rsa.Show();
         }
+
+        private void btnSHA_Click(object sender, RoutedEventArgs e)
+        {
+            wdSHA wdSHA = new();
+            wdSHA.Show();
+        }
     }
 }

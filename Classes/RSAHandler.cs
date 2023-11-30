@@ -79,5 +79,53 @@ namespace OSCryptoProject.Classes
                 return "";
             }
         }
+
+        public byte[]? SignFile()
+        {
+            OpenFileDialog dialog = new();
+
+            if (dialog.ShowDialog() == true)
+            {
+                StreamReader reader = new(dialog.FileName);
+                string text = reader.ReadToEnd();
+                reader.Close();
+                byte[] signature = _rsa.SignData(Encoding.UTF8.GetBytes(text), HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);
+
+                StreamWriter textWriter = new("text_before_hash.txt");
+                textWriter.Write(text);
+                textWriter.Close();
+                StreamWriter signatureWriter = new("signature.txt");
+                signatureWriter.Write(Convert.ToBase64String(signature));
+                signatureWriter.Close();
+                return signature;
+            }
+            return null;
+        }
+
+        public bool? CheckSignatureFromFile()
+        {
+            OpenFileDialog textDialog = new();
+            textDialog.Title = "Upload original file";
+
+            if (textDialog.ShowDialog() == true)
+            {
+                StreamReader reader = new(textDialog.FileName);
+                string text = reader.ReadToEnd();
+                reader.Close();
+
+                OpenFileDialog signatureDialog = new();
+                signatureDialog.Title = "Upload signature";
+                if (signatureDialog.ShowDialog() == true)
+                {
+                    StreamReader signReader = new(signatureDialog.FileName);
+                    byte[] signature = Convert.FromBase64String(signReader.ReadToEnd());
+                    signReader.Close();
+                    byte[] data = Encoding.UTF8.GetBytes(text);
+
+                    return _rsa.VerifyData(data, signature, HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);
+                }
+            }
+            return null;
+        }
     }
 }

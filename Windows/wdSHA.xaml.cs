@@ -36,5 +36,46 @@ namespace NOSCryptoProject.Windows
         {
             this.Close();
         }
+
+        private void btnLoadKey_Click(object sender, RoutedEventArgs e)
+        {
+            _rsa.LoadKeyFromFile();
+        }
+
+        private void btnSaveKey_Click(object sender, RoutedEventArgs e)
+        {
+            _rsa.SaveKeysToFile();
+        }
+
+        private void btnHash_Click(object sender, RoutedEventArgs e)
+        {
+            byte[] bytes = _sha.HashPlainText(txtPlainText.Text);
+            txtEncryptedText.Text = Convert.ToBase64String(bytes);
+        }
+
+        private void btnSign_Click(object sender, RoutedEventArgs e)
+        {
+            byte[]? hash = _rsa.SignFile();
+            if (hash != null)
+            {
+                txtEncryptedText.Text = Convert.ToBase64String(hash);
+            }
+        }
+
+        private void btnCheck_Click(object sender, RoutedEventArgs e)
+        {
+            bool? check = _rsa.CheckSignatureFromFile();
+            if (check != null)
+            {
+                if (check == true)
+                {
+                    MessageBox.Show("The provided message and signature are VALID", "Result", MessageBoxButton.OK);
+                }
+                else
+                {
+                    MessageBox.Show("The provided message and signature are NOT VALID", "Result", MessageBoxButton.OK);
+                }
+            }
+        }
     }
 }

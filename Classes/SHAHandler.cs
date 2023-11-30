@@ -18,7 +18,7 @@ namespace NOSCryptoProject.Classes
 
         public byte[] HashPlainText(string plainText)
         {
-            byte[] bytes = Encoding.UTF8.GetBytes(plainText);
+            byte[] bytes = Encoding.UTF8.GetBytes(plainText);//todo: save to file
             return _sha.ComputeHash(bytes);
         }
     }
