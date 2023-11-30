@@ -45,8 +45,11 @@ namespace NOSCryptoProject.Windows
         {
             if (txtPlainText.Text != "")
             {
-                string encrypted = Convert.ToBase64String(_rsa.Encrypt(txtPlainText.Text));
-                if (encrypted != null) txtEncryptedText.Text = encrypted;
+                byte[]? bytes = _rsa.Encrypt(txtPlainText.Text);
+                if (bytes != null)
+                {
+                    txtEncryptedText.Text = Convert.ToBase64String(bytes);
+                }
             }
         }
 

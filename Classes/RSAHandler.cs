@@ -21,6 +21,11 @@ namespace OSCryptoProject.Classes
             _rsa.KeySize = 4096;
         }
 
+        ~RSAHandler()
+        {
+            _rsa.Clear();
+        }
+
         public void SaveKeysToFile()
         {
             byte[] privateKey = _rsa.ExportRSAPrivateKey();

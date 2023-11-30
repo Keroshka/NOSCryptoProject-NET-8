@@ -18,6 +18,11 @@ namespace NOSCryptoProject.Classes
             _sha = SHA256.Create();
         }
 
+        ~SHAHandler()
+        {
+            _sha.Clear();
+        }
+
         public byte[] HashPlainText(string plainText)
         {
             byte[] bytes = Encoding.UTF8.GetBytes(plainText);//todo: save to file
