@@ -10,7 +10,8 @@
         <TextBox x:Name="txtPlainText" Margin="40,0,0,119" TextWrapping="Wrap" Width="200" Height="210" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
         <TextBox x:Name="txtEncryptedText" Margin="0,0,40,119" TextWrapping="Wrap" Width="200" Height="210" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
         <Button x:Name="btnSaveKey" Content="Save Keys" Margin="0,0,239,16" VerticalAlignment="Bottom" Width="102" HorizontalAlignment="Right" Click="btnSaveKey_Click"/>
-        <Button x:Name="btnLoadKey" Content="Load Key" HorizontalAlignment="Right" Margin="0,0,239,46" VerticalAlignment="Bottom" Width="102" Click="btnLoadKey_Click"/>
+        <Button x:Name="btnLoadKey" Content="Load Public Key" HorizontalAlignment="Right" Margin="0,0,239,46" VerticalAlignment="Bottom" Width="102" Click="btnLoadKey_Click"/>
+        <Button x:Name="btnLoadPrivateKey" Content="Load Private Key" HorizontalAlignment="Right" Margin="0,0,346,46" VerticalAlignment="Bottom" Width="102" Click="btnLoadPrivateKey_Click"/>
         <Button x:Name="btnEncrypt" Content="Encrypt" Margin="0,0,132,46" Width="102" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="btnEncrypt_Click"/>
         <Button x:Name="btnDecrypt" Content="Decrypt" HorizontalAlignment="Right" Margin="0,0,132,16" VerticalAlignment="Bottom" Width="102" Click="btnDecrypt_Click"/>
         <Button x:Name="btnDecryptFile" Content="Decrypt From File" HorizontalAlignment="Right" Margin="0,0,25,46" Width="102" VerticalAlignment="Bottom" Click="btnDecryptFile_Click"/>

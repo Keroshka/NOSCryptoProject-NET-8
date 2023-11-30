@@ -39,7 +39,7 @@ namespace NOSCryptoProject.Windows
 
         private void btnLoadKey_Click(object sender, RoutedEventArgs e)
         {
-            _rsa.LoadKeyFromFile();
+            _rsa.LoadPublicKeyFromFile();
         }
 
         private void btnSaveKey_Click(object sender, RoutedEventArgs e)
@@ -55,10 +55,11 @@ namespace NOSCryptoProject.Windows
 
         private void btnSign_Click(object sender, RoutedEventArgs e)
         {
-            byte[]? hash = _rsa.SignFile();
+            byte[]? hash = _rsa.SignFile(out string original);
             if (hash != null)
             {
                 txtEncryptedText.Text = Convert.ToBase64String(hash);
+                txtPlainText.Text = original;
             }
         }
 
@@ -75,6 +76,21 @@ namespace NOSCryptoProject.Windows
                 {
                     MessageBox.Show("The provided message and signature are NOT VALID", "Result", MessageBoxButton.OK);
                 }
+            }
+        }
+
+        private void btnLoadPrivateKey_Click(object sender, RoutedEventArgs e)
+        {
+            _rsa.LoadPrivateKeyFromFile();
+        }
+
+        private void btnHashFile_Click(object sender, RoutedEventArgs e)
+        {
+            byte[]? bytes = _sha.HashFile(out string original);
+            if (bytes != null)
+            {
+                txtEncryptedText.Text = Convert.ToBase64String(bytes);
+                txtPlainText.Text = original;
             }
         }
     }

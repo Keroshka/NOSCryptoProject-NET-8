@@ -23,25 +23,37 @@ namespace OSCryptoProject.Classes
 
         public void SaveKeysToFile()
         {
-            string privateKey = _rsa.ExportRSAPrivateKeyPem();
-            string publicKey = _rsa.ExportRSAPublicKeyPem();
-
+            byte[] privateKey = _rsa.ExportRSAPrivateKey();
+            byte[] publicKey = _rsa.ExportRSAPublicKey();
             StreamWriter privateWriter = new("private_key.txt");
             StreamWriter publicWriter = new("public_key.txt");
-            privateWriter.Write(privateKey);
-            publicWriter.Write(publicKey);
+            privateWriter.Write(Convert.ToBase64String(privateKey));
+            publicWriter.Write(Convert.ToBase64String(publicKey));
             privateWriter.Close();
             publicWriter.Close();
         }
 
-        public void LoadKeyFromFile()
+        public void LoadPublicKeyFromFile()
         {
             OpenFileDialog dialog = new();
 
             if (dialog.ShowDialog() == true)
             {
                 StreamReader keyReader = new(dialog.FileName);
-                _rsa.ImportFromPem(keyReader.ReadToEnd());
+                string key = keyReader.ReadToEnd();
+                _rsa.ImportRSAPublicKey(Convert.FromBase64String(key), out int bytesRead);
+                keyReader.Close();
+            }
+        }
+        public void LoadPrivateKeyFromFile()
+        {
+            OpenFileDialog dialog = new();
+
+            if (dialog.ShowDialog() == true)
+            {
+                StreamReader keyReader = new(dialog.FileName);
+                string key = keyReader.ReadToEnd();
+                _rsa.ImportRSAPrivateKey(Convert.FromBase64String(key), out int bytesRead);
                 keyReader.Close();
             }
         }
@@ -80,7 +92,7 @@ namespace OSCryptoProject.Classes
             }
         }
 
-        public byte[]? SignFile()
+        public byte[]? SignFile(out string original)
         {
             OpenFileDialog dialog = new();
 
@@ -89,9 +101,10 @@ namespace OSCryptoProject.Classes
                 StreamReader reader = new(dialog.FileName);
                 string text = reader.ReadToEnd();
                 reader.Close();
+                original = text;
                 byte[] signature = _rsa.SignData(Encoding.UTF8.GetBytes(text), HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);
 
-                StreamWriter textWriter = new("text_before_hash.txt");
+                StreamWriter textWriter = new("before_signature.txt");
                 textWriter.Write(text);
                 textWriter.Close();
                 StreamWriter signatureWriter = new("signature.txt");
@@ -99,6 +112,7 @@ namespace OSCryptoProject.Classes
                 signatureWriter.Close();
                 return signature;
             }
+            original = "";
             return null;
         }
 

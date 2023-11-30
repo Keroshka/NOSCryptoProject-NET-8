@@ -33,7 +33,7 @@ namespace NOSCryptoProject.Windows
 
         private void btnLoadKey_Click(object sender, RoutedEventArgs e)
         {
-            _rsa.LoadKeyFromFile();
+            _rsa.LoadPublicKeyFromFile();
         }
 
         private void btnSaveKey_Click(object sender, RoutedEventArgs e)
@@ -76,6 +76,11 @@ namespace NOSCryptoProject.Windows
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void btnLoadPrivateKey_Click(object sender, RoutedEventArgs e)
+        {
+            _rsa.LoadPrivateKeyFromFile();
         }
     }
 }
