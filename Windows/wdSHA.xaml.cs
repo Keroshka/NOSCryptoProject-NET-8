@@ -1,4 +1,5 @@
-﻿using OSCryptoProject.Classes;
+﻿using NOSCryptoProject.Classes;
+using OSCryptoProject.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,12 +23,18 @@ namespace NOSCryptoProject.Windows
     public partial class wdSHA : Window
     {
         private readonly RSAHandler _rsa;
-
+        private readonly SHAHandler _sha;
 
         public wdSHA()
         {
             InitializeComponent();
             _rsa = new RSAHandler();
+            _sha = new SHAHandler();
+        }
+
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

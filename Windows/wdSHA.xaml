@@ -9,14 +9,15 @@
     <Grid>
         <TextBox x:Name="txtPlainText" Margin="40,0,0,119" TextWrapping="Wrap" Width="200" Height="210" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
         <TextBox x:Name="txtEncryptedText" Margin="0,0,40,119" TextWrapping="Wrap" Width="200" Height="210" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
-        <Button x:Name="btnSaveKey" Content="Save Keys" Margin="0,0,239,16" VerticalAlignment="Bottom" Width="102" HorizontalAlignment="Right" Click="btnSaveKey_Click"/>
-        <Button x:Name="btnLoadKey" Content="Load Key" HorizontalAlignment="Right" Margin="0,0,239,46" VerticalAlignment="Bottom" Width="102" Click="btnLoadKey_Click"/>
+        <Button x:Name="btnSaveKey" Content="Save Keys" Margin="0,0,239,16" VerticalAlignment="Bottom" Width="102" HorizontalAlignment="Right"/>
+        <Button x:Name="btnLoadKey" Content="Load Key" HorizontalAlignment="Right" Margin="0,0,239,46" VerticalAlignment="Bottom" Width="102" />
         <Button x:Name="btnHash" Content="Hash" Margin="0,0,132,46" Width="102" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
         <Button x:Name="btnSign" Content="Sign file" HorizontalAlignment="Right" Margin="0,0,132,16" VerticalAlignment="Bottom" Width="102"/>
-        <Button x:Name="btnClose" Content="Close" Margin="0,0,25,16" Width="102" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+        <Button x:Name="btnClose" Content="Close" Margin="0,0,25,16" Width="102" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="btnClose_Click"/>
         <Label x:Name="lblPlainText" Content="Plain Text" HorizontalAlignment="Left" Margin="40,0,0,329" VerticalAlignment="Bottom"/>
         <Label x:Name="lblHashText" Content="Hash From Text" HorizontalAlignment="Right" Margin="0,0,153,329" VerticalAlignment="Bottom"/>
         <Button x:Name="btnCheck" Content="Check Signature" HorizontalAlignment="Right" Margin="0,0,25,46" VerticalAlignment="Bottom" Width="102"/>
+        <Label x:Name="lblRSAButtons" Content="RSA Keys:" HorizontalAlignment="Left" Margin="259,0,0,71" VerticalAlignment="Bottom"/>
 
     </Grid>
 </Window>
