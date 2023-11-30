@@ -1,22 +1,22 @@
-﻿<Window x:Class="NOSCryptoProject.Windows.wdRSA"
+﻿<Window x:Class="NOSCryptoProject.Windows.wdSHA"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NOSCryptoProject.Windows"
         mc:Ignorable="d"
-        Title="RSA" Height="400" Width="600">
+        Title="SHA256" Height="400" Width="600">
     <Grid>
         <TextBox x:Name="txtPlainText" Margin="40,0,0,119" TextWrapping="Wrap" Width="200" Height="210" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
         <TextBox x:Name="txtEncryptedText" Margin="0,0,40,119" TextWrapping="Wrap" Width="200" Height="210" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
         <Button x:Name="btnSaveKey" Content="Save Keys" Margin="0,0,239,16" VerticalAlignment="Bottom" Width="102" HorizontalAlignment="Right" Click="btnSaveKey_Click"/>
         <Button x:Name="btnLoadKey" Content="Load Key" HorizontalAlignment="Right" Margin="0,0,239,46" VerticalAlignment="Bottom" Width="102" Click="btnLoadKey_Click"/>
-        <Button x:Name="btnEncrypt" Content="Encrypt" Margin="0,0,132,46" Width="102" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="btnEncrypt_Click"/>
-        <Button x:Name="btnDecrypt" Content="Decrypt" HorizontalAlignment="Right" Margin="0,0,132,16" VerticalAlignment="Bottom" Width="102" Click="btnDecrypt_Click"/>
-        <Button x:Name="btnDecryptFile" Content="Decrypt From File" HorizontalAlignment="Right" Margin="0,0,25,46" Width="102" VerticalAlignment="Bottom" Click="btnDecryptFile_Click"/>
-        <Button x:Name="btnClose" Content="Close" Margin="0,0,25,16" Width="102" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="btnClose_Click"/>
+        <Button x:Name="btnHash" Content="Hash" Margin="0,0,132,46" Width="102" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+        <Button x:Name="btnSign" Content="Sign file" HorizontalAlignment="Right" Margin="0,0,132,16" VerticalAlignment="Bottom" Width="102"/>
+        <Button x:Name="btnClose" Content="Close" Margin="0,0,25,16" Width="102" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
         <Label x:Name="lblPlainText" Content="Plain Text" HorizontalAlignment="Left" Margin="40,0,0,329" VerticalAlignment="Bottom"/>
-        <Label x:Name="lblEncryptedText" Content="Encrypted Text" HorizontalAlignment="Right" Margin="0,0,153,329" VerticalAlignment="Bottom"/>
+        <Label x:Name="lblHashText" Content="Hash From Text" HorizontalAlignment="Right" Margin="0,0,153,329" VerticalAlignment="Bottom"/>
+        <Button x:Name="btnCheck" Content="Check Signature" HorizontalAlignment="Right" Margin="0,0,25,46" VerticalAlignment="Bottom" Width="102"/>
 
     </Grid>
 </Window>
